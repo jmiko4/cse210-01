@@ -5,27 +5,27 @@ using System.Collections.Generic;
 internal class Program
 {
     static void Main(string[] args)
-    {   
+    {   //Tic-Tac-Toe Program Main
         string turn = "x";
         int count = 0;
-        // bool win = false;
         List<string> vals = new List<string>{"1", "2", "3", "4", "5", "6","7", "8", "9"};
-
+        //print the board
         printBoard(vals);
-
+        //x starts and we enter the loop
         Console.WriteLine("x starts");
-        // turn = Console.ReadLine();
         while (!checkWin(vals)){
 
             if (turn == "x"){
             Console.WriteLine("Which spot do you want?");
             string choice = Console.ReadLine();
             int spot =int.Parse(choice);
+            //checks of the spot is taken
             while(isTaken(vals,spot)){
                 Console.WriteLine("Sorry, that spot is not available. Please choose another");
                 choice = Console.ReadLine();
                 spot =int.Parse(choice);
             }
+            //adds x to the board in the selected spot
             addX(vals,spot);
             }
             else if (turn == "o"){
@@ -39,7 +39,7 @@ internal class Program
             }
                 addO(vals,spot);
             }
-            
+            //prints the board
             printBoard(vals);
             if (checkWin(vals)){Console.WriteLine($"Congrats! {turn} won!");}
             turn = switchTurn(turn);
